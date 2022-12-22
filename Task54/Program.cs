@@ -1,14 +1,34 @@
 ﻿
-int M = 3;
-int N = 4;
+int M = ReadInt("M = ");
+int N = ReadInt("N = ");
 
 int[,] array = new int[M, N];
 
 RandomizeArray(array);
 
+SortArray(array);
+
 PrintArray(array);
 
 Console.WriteLine("Средние значения столбцов:");
+void SortArray(int[,] array)
+{
+    for (int y = 0; y < N; y++)
+        SortLine(array, y);
+}
+
+void SortLine(int[,] array, int y)
+{
+    for (int x = 0; x < M - 1; x++)
+        for (int x2 = x + 1; x2 < M; x2++)
+        {
+            if (array[x, y] >= array[x2, y])
+                continue;
+            int temp = array[x, y];
+            array[x, y] = array[x2, y];
+            array[x2, y] = temp;
+        }
+}
 
 for (int y = 0; y < N; y++)
 {
@@ -60,9 +80,9 @@ int ReadInt(string prompt)
 
 void PrintArray(int[,] array)
 {
-    for (int x = 0; x < M; x++)
+    for (int y = 0; y < N; y++)
     {
-        for (int y = 0; y < N; y++)
+        for (int x = 0; x < M; x++)
             Console.Write($"{array[x, y],5} ");
         Console.WriteLine("");
     }
