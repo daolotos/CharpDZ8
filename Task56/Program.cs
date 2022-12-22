@@ -1,5 +1,4 @@
-﻿Console.WriteLine("Введите размеры массива:");
-
+﻿
 int M = ReadInt("M = ");
 int N = ReadInt("N = ");
 
@@ -9,9 +8,9 @@ RandomizeArray(array);
 
 SortArray(array);
 
-Console.WriteLine("Массив с отсортированными строками:");
 PrintArray(array);
 
+Console.WriteLine("Средние значения столбцов:");
 void SortArray(int[,] array)
 {
     for (int y = 0; y < N; y++)
